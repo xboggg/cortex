@@ -1,0 +1,15 @@
+[Unit]
+Description=Cortex Server Monitor API
+After=network.target docker.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/var/www/cortex
+ExecStart=/usr/bin/python3 /var/www/cortex/server/api.py
+Restart=always
+RestartSec=5
+Environment=CORTEX_PORT=3500
+
+[Install]
+WantedBy=multi-user.target
